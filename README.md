@@ -1,2 +1,2 @@
 # tdd-mockmvc-api
-Projeto exemplo utilização testes unitários utilizando MockMVC
+Projeto exemplo implementação testes unitários utilizando MockMVC
