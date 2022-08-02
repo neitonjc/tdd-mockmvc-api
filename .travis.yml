@@ -3,9 +3,9 @@ sudo: false
 install: true
 addons:
   sonarcloud:
-    organization: "your_organization_key"
+    organization: ${{ secrets.GITHUB_TOKEN }}
     token:
-      secure: "$SONAR_TOKEN"
+      secure: ${{ secrets.SONAR_TOKEN }}
 jdk:
   - oraclejdk8
 script:
