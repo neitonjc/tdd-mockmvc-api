@@ -26,16 +26,18 @@ public class PessoaService {
 		return rep.save(p);
 	}
 	
-	public Pessoa updateEmail(Integer peopleId, String email) throws Exception {
+	public Pessoa updateEmail(Integer peopleId, String email) {
 		Pessoa p = rep.findById(peopleId).get();
 		p.setEmail(email);
 		
-		throw new Exception("");
-		
-//		return rep.save(p);
+		return rep.save(p);
 	}
 	
 	public void delete(Integer peopleId) {
+		rep.deleteById(peopleId);
+	}
+	
+	public void delete_(Integer peopleId) {
 		rep.deleteById(peopleId);
 	}
 
