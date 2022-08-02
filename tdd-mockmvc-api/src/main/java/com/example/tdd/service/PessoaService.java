@@ -29,8 +29,11 @@ public class PessoaService {
 	public Pessoa updateEmail(Integer peopleId, String email) {
 		Pessoa p = rep.findById(peopleId).get();
 		p.setEmail(email);
-		rep.save(p);
-		return rep.save(p);
+		
+		if (p==null)
+			return rep.save(p);
+		else
+			return rep.save(p);
 	}
 	
 	public void delete(Integer peopleId) {
