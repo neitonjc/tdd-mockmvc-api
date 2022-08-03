@@ -35,18 +35,18 @@ public class PessoaController {
 	
 	@GetMapping(path="/listarPorId")
 	public ResponseEntity<Pessoa> listarPorId(@RequestParam(required = true) Integer cod){
-		return new ResponseEntity<Pessoa>(service.findPeopleById(cod), HttpStatus.FOUND);
+		return new ResponseEntity<>(service.findPeopleById(cod), HttpStatus.FOUND);
 	}
 	
 	@PostMapping(path="/incluir")
 	public ResponseEntity<Pessoa> incluir(@RequestBody @Valid Pessoa pessoa){
-		return new ResponseEntity<Pessoa>(service.save(pessoa), HttpStatus.CREATED);
+		return new ResponseEntity<>(service.save(pessoa), HttpStatus.CREATED);
 	}
 	
 	@PutMapping(path="/editar")
 	public ResponseEntity<Pessoa> editar(@RequestParam(required = true) Integer cod,
 						 @RequestParam(required = true) @Valid String email){
-		return new ResponseEntity<Pessoa>(service.updateEmail(cod, email), HttpStatus.OK);
+		return new ResponseEntity<>(service.updateEmail(cod, email), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/excluir")
