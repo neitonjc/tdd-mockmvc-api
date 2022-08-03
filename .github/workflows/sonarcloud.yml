@@ -37,3 +37,8 @@ jobs:
         run: | 
           cd ./tdd-mockmvc-api 
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=neitonjc_tdd-mockmvc-api
+          
+      - name: List the target directory
+        run: | 
+          cd ./tdd-mockmvc-api/target
+          ls -a
