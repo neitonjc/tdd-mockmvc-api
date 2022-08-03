@@ -18,8 +18,8 @@ public class PessoaService {
 		return rep.findAll();
 	}
 	
-	public Pessoa findPeopleById(Integer cod) {
-		return rep.findById(cod).orElse(null);
+	public Pessoa findPeopleById(Integer peopleId) {
+		return rep.findById(peopleId).orElse(null);
 	}
 	
 	public Pessoa save(Pessoa p) {
