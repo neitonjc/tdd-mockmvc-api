@@ -27,7 +27,7 @@ public class PessoaService {
 	}
 	
 	public Pessoa updateEmail(Integer peopleId, String email) {
-		Pessoa p = findPeopleById(peopleId);
+		Pessoa p = rep.findById(peopleId).get();
 		p.setEmail(email);
 		
 		return rep.save(p);
