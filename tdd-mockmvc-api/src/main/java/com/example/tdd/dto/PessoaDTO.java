@@ -27,10 +27,6 @@ public class PessoaDTO {
 	private Genero genero;
 	
 	private Collection<Pet> pets;
-	
-	public PessoaDTO() {
-		super();
-	}
 
 	public PessoaDTO(@NotNull Integer cod, @NotNull String nome, @NotNull @Email String email, @NotNull Genero genero,
 			Collection<Pet> pets) {
