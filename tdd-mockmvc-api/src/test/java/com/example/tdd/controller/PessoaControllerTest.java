@@ -38,12 +38,12 @@ public class PessoaControllerTest {
 	}
 
 	@Test
-	private void returnSuccess_whenFindAllPeople() throws Exception {
+	void returnSuccess_whenFindAllPeople() throws Exception {
 		this.mockMvc.perform(get("/pessoa/listar")).andExpect(status().isFound());
 	}
 
 	@Test
-	private void returnFound_whenFindPeopleById() throws Exception {
+	void returnFound_whenFindPeopleById() throws Exception {
 		this.mockMvc.perform(get("/pessoa/listarPorId")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.param("cod", "1"))
@@ -51,7 +51,7 @@ public class PessoaControllerTest {
 	}
 	
 	@Test
-	private void returnCreated_whenInsert() throws Exception {
+	void returnCreated_whenInsert() throws Exception {
 		this.mockMvc.perform(post("/pessoa/incluir")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(new ObjectMapper().writeValueAsString(p)))
@@ -59,7 +59,7 @@ public class PessoaControllerTest {
 	}
 	
 	@Test
-	private void returnBadRequest_whenInsert() throws Exception {
+	void returnBadRequest_whenInsert() throws Exception {
 		p.setEmail("ze.com");
 		this.mockMvc.perform(post("/pessoa/incluir")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -68,7 +68,7 @@ public class PessoaControllerTest {
 	}
 	
 	@Test
-	private void returnOk_whenUpdate() throws Exception {
+	void returnOk_whenUpdate() throws Exception {
 		this.mockMvc.perform(put("/pessoa/editar")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.param("cod", "1")
@@ -77,7 +77,7 @@ public class PessoaControllerTest {
 	}
 	
 	@Test
-	private void returnBadRequest_whenUpdate() throws Exception {
+	void returnBadRequest_whenUpdate() throws Exception {
 		p.setEmail(null);
 		this.mockMvc.perform(put("/pessoa/editar")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -87,7 +87,7 @@ public class PessoaControllerTest {
 	}
 	
 	@Test
-	private void returnOk_whenDelete() throws Exception {
+	void returnOk_whenDelete() throws Exception {
 		this.mockMvc.perform(delete("/pessoa/excluir")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.param("cod", "1"))
