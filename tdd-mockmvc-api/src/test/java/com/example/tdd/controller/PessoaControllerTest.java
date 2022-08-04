@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.tdd.dto.PessoaDTO;
 import com.example.tdd.model.Genero;
-import com.example.tdd.model.Pessoa;
 import com.example.tdd.service.PessoaService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
