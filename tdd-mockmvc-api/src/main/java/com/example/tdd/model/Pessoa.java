@@ -11,8 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="PESSOA")
@@ -23,13 +23,16 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cod;
 	
+	@NotNull
 	@Column(name="NOME")
 	private String nome;
 	
+	@NotNull
 	@Email
 	@Column(name="EMAIL")
 	private String email;
 	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Genero genero;
 	
@@ -42,7 +45,7 @@ public class Pessoa {
 		super();
 	}
 
-	public Pessoa(Integer cod, String nome, @Valid String email, Genero genero, Collection<Pet> pets) {
+	public Pessoa(Integer cod, String nome, String email, Genero genero, Collection<Pet> pets) {
 		super();
 		this.cod = cod;
 		this.nome = nome;

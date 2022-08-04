@@ -1,41 +1,97 @@
 package com.example.tdd.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.Collections;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
+import com.example.tdd.model.Genero;
+import com.example.tdd.model.Pessoa;
 import com.example.tdd.service.PessoaService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.restassured.http.ContentType;
-import io.restassured.module.mockmvc.RestAssuredMockMvc;
-
-@WebMvcTest
+@WebMvcTest(PessoaController.class)
 public class PessoaControllerTest {
-
+	
 	@Autowired
-	private PessoaController pessoaController;
+	private MockMvc mockMvc;
 
 	@MockBean
 	private PessoaService pessoaService;
+	
+	Pessoa p;
 
 	@BeforeEach
 	public void setup() {
-		RestAssuredMockMvc.standaloneSetup(pessoaController);
+		p = new Pessoa(1, "Ze", "ze@ze.com", Genero.MASCULINO, Collections.emptyList());
 	}
 
 	@Test
-	public void returnSuccess_whenFindAllPeople() {
-		RestAssuredMockMvc.given().accept(ContentType.JSON).when().get("/pessoa/listar").then()
-				.status(HttpStatus.FOUND);
+	private void returnSuccess_whenFindAllPeople() throws Exception {
+		this.mockMvc.perform(get("/pessoa/listar")).andExpect(status().isFound());
 	}
 
 	@Test
-	public void returnSuccess_whenFindPeopleById() {
-		RestAssuredMockMvc.given().accept(ContentType.JSON).when().get("/pessoa/listarPorId?cod=1").then()
-				.status(HttpStatus.FOUND);
+	private void returnFound_whenFindPeopleById() throws Exception {
+		this.mockMvc.perform(get("/pessoa/listarPorId")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.param("cod", "1"))
+			.andExpect(status().isFound());
+	}
+	
+	@Test
+	private void returnCreated_whenInsert() throws Exception {
+		this.mockMvc.perform(post("/pessoa/incluir")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.content(new ObjectMapper().writeValueAsString(p)))
+			.andExpect(status().isCreated());
+	}
+	
+	@Test
+	private void returnBadRequest_whenInsert() throws Exception {
+		p.setEmail("ze.com");
+		this.mockMvc.perform(post("/pessoa/incluir")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.content(new ObjectMapper().writeValueAsString(p)))
+			.andExpect(status().isBadRequest());
+	}
+	
+	@Test
+	private void returnOk_whenUpdate() throws Exception {
+		this.mockMvc.perform(put("/pessoa/editar")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.param("cod", "1")
+				.param("email", "ze1@ze.com"))
+			.andExpect(status().isOk());
+	}
+	
+	@Test
+	private void returnBadRequest_whenUpdate() throws Exception {
+		p.setEmail(null);
+		this.mockMvc.perform(put("/pessoa/editar")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.param("cod", String.valueOf(p.getCod()))
+				.param("email", p.getEmail()))
+		.andExpect(status().isBadRequest());
+	}
+	
+	@Test
+	private void returnOk_whenDelete() throws Exception {
+		this.mockMvc.perform(delete("/pessoa/excluir")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.param("cod", "1"))
+		.andExpect(status().isOk());
 	}
 
 }

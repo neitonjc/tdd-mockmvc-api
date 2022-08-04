@@ -3,6 +3,8 @@ package com.example.tdd.controller;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,12 +47,13 @@ public class PessoaController {
 	
 	@PutMapping(path="/editar")
 	public ResponseEntity<Pessoa> editar(@RequestParam(required = true) Integer cod,
-						 @RequestParam(required = true) @Valid String email){
+						 @RequestParam(required = true) @NotNull @Valid @Email String email){
 		return new ResponseEntity<>(service.updateEmail(cod, email), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/excluir")
-	public void excluir(@RequestParam(required = true) Integer cod){
+	@ResponseStatus(HttpStatus.OK)
+	public void excluir(@RequestParam(required = true) @NotNull Integer cod){
 		service.delete(cod);
 	}
 }
