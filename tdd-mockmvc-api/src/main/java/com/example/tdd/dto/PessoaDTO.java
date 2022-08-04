@@ -9,7 +9,6 @@ import javax.validation.constraints.NotNull;
 
 import com.example.tdd.model.Genero;
 import com.example.tdd.model.Pet;
-import com.sun.istack.Nullable;
 
 public class PessoaDTO {
 	
@@ -24,10 +23,9 @@ public class PessoaDTO {
 	private String email;
 	
 	@NotNull
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING)	
 	private Genero genero;
 	
-	@Nullable
 	private Collection<Pet> pets;
 	
 	
