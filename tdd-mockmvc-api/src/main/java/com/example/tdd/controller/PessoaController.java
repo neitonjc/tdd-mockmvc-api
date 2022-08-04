@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.BeanUtils;
@@ -53,7 +54,7 @@ public class PessoaController {
 	
 	@PutMapping(path="/editar")
 	public ResponseEntity<Pessoa> editar(@RequestParam(required = true) Integer cod,
-						 @RequestParam(required = true) @NotNull @Valid @Email String email){
+						 @RequestParam(required = true) @NotBlank @Valid @Email String email){
 		return new ResponseEntity<>(service.updateEmail(cod, email), HttpStatus.OK);
 	}
 	

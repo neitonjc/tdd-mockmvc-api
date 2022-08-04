@@ -60,7 +60,7 @@ class PessoaControllerTest {
 	
 	@Test
 	void returnBadRequest_whenInsert() throws Exception {
-		p.setEmail("ze.com");
+		p = new PessoaDTO(1, "Ze", "ze.com", Genero.MASCULINO, Collections.emptyList());
 		this.mockMvc.perform(post("/pessoa/incluir")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(new ObjectMapper().writeValueAsString(p)))
@@ -78,11 +78,11 @@ class PessoaControllerTest {
 	
 	@Test
 	void returnBadRequest_whenUpdate() throws Exception {
-		p.setEmail(null);
+		String email = null;
 		this.mockMvc.perform(put("/pessoa/editar")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
-				.param("cod", String.valueOf(p.getCod()))
-				.param("email", p.getEmail()))
+				.param("cod", "1")
+				.param("email", email))
 		.andExpect(status().isBadRequest());
 	}
 	

@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 
 import com.example.tdd.model.Genero;
 import com.example.tdd.model.Pet;
+import com.sun.istack.Nullable;
 
 public class PessoaDTO {
 	
@@ -26,10 +27,19 @@ public class PessoaDTO {
 	@Enumerated(EnumType.STRING)
 	private Genero genero;
 	
+	@Nullable
 	private Collection<Pet> pets;
+	
+	
 
-	public PessoaDTO(@NotNull Integer cod, @NotNull String nome, @NotNull @Email String email, @NotNull Genero genero,
-			Collection<Pet> pets) {
+	public PessoaDTO() {
+		super();
+	}
+
+
+
+	public PessoaDTO(@NotNull Integer cod, @NotNull String nome, @NotNull @Email String email,
+			@NotNull Genero genero, Collection<Pet> pets) {
 		super();
 		this.cod = cod;
 		this.nome = nome;
@@ -38,41 +48,61 @@ public class PessoaDTO {
 		this.pets = pets;
 	}
 
+
+
 	public Integer getCod() {
 		return cod;
 	}
+
+
 
 	public void setCod(Integer cod) {
 		this.cod = cod;
 	}
 
+
+
 	public String getNome() {
 		return nome;
 	}
+
+
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+
+
 	public String getEmail() {
 		return email;
 	}
+
+
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+
+
 	public Genero getGenero() {
 		return genero;
 	}
+
+
 
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 
+
+
 	public Collection<Pet> getPets() {
 		return pets;
 	}
+
+
 
 	public void setPets(Collection<Pet> pets) {
 		this.pets = pets;
