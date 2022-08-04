@@ -16,6 +16,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.example.tdd.dto.PessoaDTO;
 import com.example.tdd.model.Genero;
 import com.example.tdd.model.Pessoa;
 import com.example.tdd.service.PessoaService;
@@ -30,11 +31,11 @@ public class PessoaControllerTest {
 	@MockBean
 	private PessoaService pessoaService;
 	
-	Pessoa p;
+	private PessoaDTO p;
 
 	@BeforeEach
 	public void setup() {
-		p = new Pessoa(1, "Ze", "ze@ze.com", Genero.MASCULINO, Collections.emptyList());
+		p = new PessoaDTO(1, "Ze", "ze@ze.com", Genero.MASCULINO, Collections.emptyList());
 	}
 
 	@Test
