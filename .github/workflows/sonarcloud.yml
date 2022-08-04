@@ -1,7 +1,7 @@
 name: SonarCloud analysis maven test and build package
 
 on:
-  pull_request:
+  push:
     branches: [ "main" ]
 
 jobs:
