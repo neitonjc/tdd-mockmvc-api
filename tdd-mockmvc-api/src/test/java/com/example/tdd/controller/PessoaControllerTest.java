@@ -22,7 +22,7 @@ import com.example.tdd.service.PessoaService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest(PessoaController.class)
-public class PessoaControllerTest {
+class PessoaControllerTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
