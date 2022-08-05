@@ -32,8 +32,6 @@ public class Pessoa {
 	
 	@OneToMany(mappedBy = "dono")
 	private Collection<Pet> pets;
-	
-	
 
 	public Pessoa() {
 		super();
