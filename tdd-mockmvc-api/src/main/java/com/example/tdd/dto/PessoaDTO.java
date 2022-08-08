@@ -29,7 +29,7 @@ public class PessoaDTO {
 
 
 
-	public PessoaDTO(@NotNull Integer cod, @NotNull String nome, @NotNull @Email String email,
+	public PessoaDTO(Integer cod, @NotNull String nome, @NotNull @Email String email,
 			@NotNull Genero genero, Collection<Pet> pets) {
 		this.cod = cod;
 		this.nome = nome;
