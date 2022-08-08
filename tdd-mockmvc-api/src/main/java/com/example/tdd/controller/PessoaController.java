@@ -46,8 +46,11 @@ public class PessoaController {
 	@PostMapping(path="/incluir")
 	public ResponseEntity<PessoaDTO> incluir(@RequestBody @Valid PessoaDTO pDto){
 		Pessoa p = new Pessoa();
-		BeanUtils.copyProperties(p, pDto);
+		BeanUtils.copyProperties(pDto, p);
+		
 		service.save(p);
+		
+		BeanUtils.copyProperties(p, pDto);
 		
 		return new ResponseEntity<>(pDto, HttpStatus.CREATED);
 	}
