@@ -86,53 +86,5 @@ public class Pessoa {
 		this.pets = pets;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((cod == null) ? 0 : cod.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((pets == null) ? 0 : pets.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pessoa other = (Pessoa) obj;
-		if (cod == null) {
-			if (other.cod != null)
-				return false;
-		} else if (!cod.equals(other.cod))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (genero != other.genero)
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (pets == null) {
-			if (other.pets != null)
-				return false;
-		} else if (!pets.equals(other.pets))
-			return false;
-		return true;
-	}
-
-	
-	
 	
 }
