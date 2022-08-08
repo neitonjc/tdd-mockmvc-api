@@ -12,7 +12,6 @@ import com.example.tdd.model.Pet;
 
 public class PessoaDTO {
 	
-	@NotNull
 	private Integer cod;
 	
 	@NotNull
