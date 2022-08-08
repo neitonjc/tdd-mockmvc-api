@@ -1,14 +1,11 @@
 package com.example.tdd.dto;
 
-import java.util.Collection;
-
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import com.example.tdd.model.Genero;
-import com.example.tdd.model.Pet;
 
 public class PessoaDTO {
 	
@@ -24,18 +21,15 @@ public class PessoaDTO {
 	@NotNull
 	@Enumerated(EnumType.STRING)	
 	private Genero genero;
-	
-	private Collection<Pet> pets;
 
 
 
 	public PessoaDTO(Integer cod, @NotNull String nome, @NotNull @Email String email,
-			@NotNull Genero genero, Collection<Pet> pets) {
+			@NotNull Genero genero) {
 		this.cod = cod;
 		this.nome = nome;
 		this.email = email;
 		this.genero = genero;
-		this.pets = pets;
 	}
 
 
@@ -85,19 +79,5 @@ public class PessoaDTO {
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
-
-
-
-	public Collection<Pet> getPets() {
-		return pets;
-	}
-
-
-
-	public void setPets(Collection<Pet> pets) {
-		this.pets = pets;
-	}
-
-	
 
 }
