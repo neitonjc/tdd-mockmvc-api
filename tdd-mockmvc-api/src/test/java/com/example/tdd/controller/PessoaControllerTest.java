@@ -6,8 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +32,7 @@ class PessoaControllerTest {
 
 	@BeforeEach
 	public void setup() {
-		p = new PessoaDTO(1, "Ze", "ze@ze.com", Genero.MASCULINO, Collections.emptyList());
+		p = new PessoaDTO(1, "Ze", "ze@ze.com", Genero.MASCULINO);
 	}
 
 	@Test
@@ -60,7 +58,7 @@ class PessoaControllerTest {
 	
 	@Test
 	void returnBadRequest_whenInsert() throws Exception {
-		p = new PessoaDTO(1, "Ze", "ze.com", Genero.MASCULINO, Collections.emptyList());
+		p = new PessoaDTO(1, "Ze", "ze.com", Genero.MASCULINO);
 		this.mockMvc.perform(post("/pessoa/incluir")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(new ObjectMapper().writeValueAsString(p)))
