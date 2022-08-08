@@ -27,7 +27,7 @@ jobs:
        password: ${{ secrets.DOCKERHUB_PASS }}
        
   deploy:
-    name: Deploy server on premise
+    name: Deploy in AWS EC2 instance
     runs-on: self-hosted
     needs: build
     steps:
