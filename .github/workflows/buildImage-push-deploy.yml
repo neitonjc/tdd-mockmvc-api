@@ -26,12 +26,12 @@ jobs:
        username: ${{ secrets.DOCKERHUB_USER }}
        password: ${{ secrets.DOCKERHUB_PASS }}
        
-  deploy:
-    name: Deploy in AWS EC2 instance
-    runs-on: self-hosted
-    needs: build
-    steps:
-     - name: Run docker-compose
-       run: docker-compose -f /home/ubuntu/apis/tdd-mockmvc-api/docker-compose.yml stop && docker-compose -f /home/ubuntu/apis/tdd-mockmvc-api/docker-compose.yml pull && docker-compose -f /home/ubuntu/apis/tdd-mockmvc-api/docker-compose.yml up -d
-     - name: Check running containers
-       run: docker ps -a
+  #deploy:
+   # name: Deploy in AWS EC2 instance
+    #runs-on: self-hosted
+    #needs: build
+    #steps:
+     #- name: Run docker-compose
+      # run: docker-compose -f /home/ubuntu/apis/tdd-mockmvc-api/docker-compose.yml stop && docker-compose -f /home/ubuntu/apis/tdd-mockmvc-api/docker-compose.yml pull && docker-compose -f /home/ubuntu/apis/tdd-mockmvc-api/docker-compose.yml up -d
+     #- name: Check running containers
+      # run: docker ps -a
