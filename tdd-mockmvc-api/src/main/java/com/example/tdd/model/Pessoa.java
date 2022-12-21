@@ -37,15 +37,6 @@ public class Pessoa {
 		super();
 	}
 
-	public Pessoa(Integer cod, String nome, String email, Genero genero, Collection<Pet> pets) {
-		super();
-		this.cod = cod;
-		this.nome = nome;
-		this.email = email;
-		this.genero = genero;
-		this.pets = pets;
-	}
-
 	public Integer getCod() {
 		return cod;
 	}
