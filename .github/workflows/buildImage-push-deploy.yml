@@ -17,9 +17,12 @@ jobs:
     - name: Build with Maven
       run: mvn -f tdd-mockmvc-api/pom.xml clean install
       
-    - name: Get version
-      run: | 
-          mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout
+    - name: Extract Maven project version
+      run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+      id: project
+
+    - name: Show extracted Maven project version
+      run: echo ${{ steps.project.outputs.version }}
       
     - name: Build and push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
