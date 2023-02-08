@@ -18,7 +18,7 @@ jobs:
       run: mvn -f tdd-mockmvc-api/pom.xml clean install
       
     - name: Get version
-      run: $project_version=mvn help:evaluate -Dexpression=project.version -q -DforceStdout; echo "project_version=$project_version" >> $Env:GITHUB_ENV
+      run: mvn help:evaluate -Dexpression=project.version -q -DforceStdout
       
     - name: Build and push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
