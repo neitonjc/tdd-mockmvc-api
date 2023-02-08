@@ -19,8 +19,7 @@ jobs:
       
     - name: Get version
       run: | 
-          cd ./tdd-mockmvc-api/target
-          mvn help:evaluate -Dexpression=project.version -q -DforceStdout
+          mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout
       
     - name: Build and push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
