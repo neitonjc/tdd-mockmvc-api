@@ -19,7 +19,10 @@ jobs:
       
     - name: Set Release version env variable
       run: |
-       echo mvn help:evaluate -Dexpression=project.version -q -DforceStdout
+       echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+       
+    - name: showVersion
+      run: echo ${{ env.RELEASE_VERSION }}
       
     - name: Build and push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
