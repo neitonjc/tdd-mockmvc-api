@@ -32,7 +32,7 @@ public class SwaggerConfig {
 	}
 	
 	private List<Response> getDefaultResponses(){
-		List<Response> responses = new ArrayList<Response>();
+		List<Response> responses = new ArrayList<>();
 		responses.add(new Response(String.valueOf(HttpStatus.NO_CONTENT.value()), HttpStatus.NO_CONTENT.getReasonPhrase(), false, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
 		responses.add(new Response(String.valueOf(HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST.getReasonPhrase(), false, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
 		responses.add(new Response(String.valueOf(HttpStatus.FORBIDDEN.value()), HttpStatus.FORBIDDEN.getReasonPhrase(), false, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
