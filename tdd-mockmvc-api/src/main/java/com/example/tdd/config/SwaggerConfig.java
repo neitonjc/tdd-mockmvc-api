@@ -33,6 +33,8 @@ public class SwaggerConfig {
 	
 	private List<Response> getDefaultResponses(){
 		List<Response> responses = new ArrayList<>();
+		responses.add(new Response(String.valueOf(HttpStatus.FOUND.value()), HttpStatus.NO_CONTENT.getReasonPhrase(), false, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
+		
 		responses.add(new Response(String.valueOf(HttpStatus.NO_CONTENT.value()), HttpStatus.NO_CONTENT.getReasonPhrase(), false, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
 		responses.add(new Response(String.valueOf(HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST.getReasonPhrase(), false, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
 		responses.add(new Response(String.valueOf(HttpStatus.FORBIDDEN.value()), HttpStatus.FORBIDDEN.getReasonPhrase(), false, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
@@ -46,7 +48,7 @@ public class SwaggerConfig {
 	private ApiInfo metaInfo() {
 		return new ApiInfo("tdd-mockmvc-api", 
 						   "API para testes",
-						   "1.0.3",  
+						   "1.0.4",  
 						   "Termos de Serviço", 
 						   new Contact("Neiton Junior Carneiro", "https://github.com/neitonjc/", "neitonjc@gmail.com"), null, null, new ArrayList<>()
 			);
