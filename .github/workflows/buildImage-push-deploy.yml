@@ -18,7 +18,9 @@ jobs:
       run: mvn -f tdd-mockmvc-api/pom.xml clean install
       
     - name: Get version
-      run: mvn help:evaluate -Dexpression=project.version -q -DforceStdout
+      run: | 
+          cd ./tdd-mockmvc-api/target
+          mvn help:evaluate -Dexpression=project.version -q -DforceStdout
       
     - name: Build and push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
