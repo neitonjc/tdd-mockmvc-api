@@ -46,7 +46,7 @@ public class SwaggerConfig {
 	private ApiInfo metaInfo() {
 		return new ApiInfo("tdd-mockmvc-api", 
 						   "API para testes",
-						   "1.0.0",  
+						   "1.0.1",  
 						   "Termos de Serviço", 
 						   new Contact("Neiton Junior Carneiro", "https://github.com/neitonjc/", "neitonjc@gmail.com"), null, null, new ArrayList<>()
 			);
