@@ -15,7 +15,6 @@
 	<description>Exemplo utilizacao testes unitarios utilizando MockMVC</description>
 	<properties>
 		<java.version>11</java.version>
-		<resource.delimiter>^</resource.delimiter>
 		<sonar.organization>neitonjc</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
