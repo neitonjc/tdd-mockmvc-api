@@ -16,20 +16,21 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build with Maven
       run: mvn -f tdd-mockmvc-api/pom.xml clean install
-      
+    
+    - name: Set Release version env variable
+      run: |
+        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+    
     - name: Build and push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
        image: neitonjc/tdd-mockmvc-api
-       tags: 0.0.1, latest
+       tags: ${{ env.RELEASE_VERSION }}, latest
        registry: docker.io
        dockerfile: Dockerfile
        username: ${{ secrets.DOCKERHUB_USER }}
        password: ${{ secrets.DOCKERHUB_PASS }}
-       
-    - name: Set Release version env variable
-      run: |
-        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+    
   
   #deploy:
    # name: Deploy in AWS EC2 instance
