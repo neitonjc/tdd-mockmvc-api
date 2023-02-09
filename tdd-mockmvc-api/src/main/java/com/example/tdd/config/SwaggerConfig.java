@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -19,6 +20,9 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SwaggerConfig {
+	
+	@Value("${api.version}")
+	private String apiVersion;
 	
 	@Bean
 	public Docket swagger(){
@@ -48,7 +52,7 @@ public class SwaggerConfig {
 	private ApiInfo metaInfo() {
 		return new ApiInfo("tdd-mockmvc-api", 
 						   "API para testes",
-						   "1.0.4",  
+						   apiVersion,  
 						   "Termos de Serviço", 
 						   new Contact("Neiton Junior Carneiro", "https://github.com/neitonjc/", "neitonjc@gmail.com"), null, null, new ArrayList<>()
 			);
