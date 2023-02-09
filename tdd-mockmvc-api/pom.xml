@@ -12,7 +12,7 @@
 	<artifactId>tdd-mockmvc-api</artifactId>
 	<version>1.1.9</version>
 	<name>tdd-mockmvc-api</name>
-	<description>Exemplo utilizacao testes unitarios utilizando MockMVC</description>
+	<description>Exemplo utilizacao testes unitarios utilizando TDD e MockMVC</description>
 	<properties>
 		<java.version>11</java.version>
 		<sonar.organization>neitonjc</sonar.organization>
