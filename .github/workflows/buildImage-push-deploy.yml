@@ -19,7 +19,7 @@ jobs:
     
     - name: Set Release version env variable
       run: |
-        echo "RELEASE_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.artifactId)" >> $GITHUB_ENV
+        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
     
     - name: Build and push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
