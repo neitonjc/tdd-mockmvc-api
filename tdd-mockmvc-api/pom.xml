@@ -10,12 +10,11 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>tdd-mockmvc-api</artifactId>
-	<version>1.1.7</version>
+	<version>1.1.8</version>
 	<name>tdd-mockmvc-api</name>
 	<description>Exemplo utilizacao testes unitarios utilizando MockMVC</description>
 	<properties>
 		<java.version>11</java.version>
-<!-- 		<spring-boot.build-image.imageName>andylke/${project.artifactId}:${project.version}</spring-boot.build-image.imageName> -->
 		<resource.delimiter>^</resource.delimiter>
 		<sonar.organization>neitonjc</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
@@ -87,11 +86,6 @@
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.4.0.905</version>
-            </plugin>
-            
-             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-help-plugin</artifactId>
             </plugin>
             
 		</plugins>
