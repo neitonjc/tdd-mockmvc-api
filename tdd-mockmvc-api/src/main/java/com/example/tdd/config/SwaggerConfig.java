@@ -24,6 +24,12 @@ public class SwaggerConfig {
 	@Value("${api.version}")
 	private String apiVersion;
 	
+	@Value("${api.description}")
+	private String apiDescription;
+	
+	@Value("${api.artifactId}")
+	private String artifactId;
+	
 	@Bean
 	public Docket swagger(){
 		return new Docket(DocumentationType.SWAGGER_2)
@@ -37,7 +43,7 @@ public class SwaggerConfig {
 	
 	private List<Response> getDefaultResponses(){
 		List<Response> responses = new ArrayList<>();
-		responses.add(new Response(String.valueOf(HttpStatus.FOUND.value()), HttpStatus.NO_CONTENT.getReasonPhrase(), false, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
+		responses.add(new Response(String.valueOf(HttpStatus.FOUND.value()), HttpStatus.FOUND.getReasonPhrase(), false, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
 		
 		responses.add(new Response(String.valueOf(HttpStatus.NO_CONTENT.value()), HttpStatus.NO_CONTENT.getReasonPhrase(), false, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
 		responses.add(new Response(String.valueOf(HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST.getReasonPhrase(), false, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
@@ -50,8 +56,8 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo metaInfo() {
-		return new ApiInfo("tdd-mockmvc-api", 
-						   "API para testes",
+		return new ApiInfo(artifactId, 
+						   apiDescription,
 						   apiVersion,  
 						   "Termos de Serviço", 
 						   new Contact("Neiton Junior Carneiro", "https://github.com/neitonjc/", "neitonjc@gmail.com"), null, null, new ArrayList<>()
