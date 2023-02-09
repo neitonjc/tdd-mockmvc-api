@@ -15,7 +15,8 @@
 	<description>Exemplo utilizacao testes unitarios utilizando MockMVC</description>
 	<properties>
 		<java.version>11</java.version>
-		<spring-boot.build-image.imageName>andylke/${project.artifactId}:${project.version}</spring-boot.build-image.imageName>
+<!-- 		<spring-boot.build-image.imageName>andylke/${project.artifactId}:${project.version}</spring-boot.build-image.imageName> -->
+		<resource.delimiter>^</resource.delimiter>
 		<sonar.organization>neitonjc</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
