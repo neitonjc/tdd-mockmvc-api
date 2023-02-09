@@ -21,7 +21,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
        image: neitonjc/tdd-mockmvc-api
-       tags: ^project.version^, latest
+       tags: ${{needs.build.outputs.jar_version}}, latest
        registry: docker.io
        dockerfile: Dockerfile
        username: ${{ secrets.DOCKERHUB_USER }}
