@@ -32,15 +32,16 @@ jobs:
        password: ${{ secrets.DOCKERHUB_PASS }}
     
   deploy:
-    - name: Deploy on premisse k8s server
-      runs-on: self-hosted
-      needs: build
-      uses: jtalk/k8s-deploy@v2
+    name: Deploy on premisse k8s server
+    needs: build
+    runs-on: self-hosted
+    steps:
+    - uses: jtalk/k8s-deploy@v2
       with:
         namespace: 'neiton'
         manifests: |
-            deployment.yaml
-            service.yaml
+            MANIFESTS/deployment.yaml
+            MANIFESTS/service.yaml
         images: 'neitonjc/tdd-mockmvc-api:${{ env.RELEASE_VERSION }}'
         kubectl-version: 'latest'
 
