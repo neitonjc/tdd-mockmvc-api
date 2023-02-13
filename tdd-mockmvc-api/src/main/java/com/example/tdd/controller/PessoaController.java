@@ -34,12 +34,12 @@ public class PessoaController {
 	
 	@GetMapping(path="/listar")
 	public ResponseEntity<List<Pessoa>> listar(){
-		return new ResponseEntity<>(service.findAllPeople(), HttpStatus.FOUND);
+		return new ResponseEntity<>(service.findAllPeople(), HttpStatus.OK);
 	}
 	
 	@GetMapping(path="/listarPorId")
 	public ResponseEntity<Pessoa> listarPorId(@RequestParam(required = true) Integer cod){
-		return new ResponseEntity<>(service.findPeopleById(cod), HttpStatus.FOUND);
+		return new ResponseEntity<>(service.findPeopleById(cod), HttpStatus.OK);
 	}
 	
 	@PostMapping(path="/incluir")
