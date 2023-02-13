@@ -34,8 +34,8 @@ public class PessoaController {
 	
 	@GetMapping(path="/listar")
 	@ResponseStatus(HttpStatus.FOUND)
-	public List<Pessoa> listar(){
-		return service.findAllPeople();
+	public ResponseEntity<List<Pessoa>> listar(){
+		return new ResponseEntity<>(service.findAllPeople(), HttpStatus.FOUND);
 	}
 	
 	@GetMapping(path="/listarPorId")
