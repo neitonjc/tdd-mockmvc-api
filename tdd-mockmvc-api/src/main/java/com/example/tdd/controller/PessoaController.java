@@ -33,7 +33,6 @@ public class PessoaController {
 	PessoaService service;
 	
 	@GetMapping(path="/listar")
-	@ResponseStatus(HttpStatus.FOUND)
 	public ResponseEntity<List<Pessoa>> listar(){
 		return new ResponseEntity<>(service.findAllPeople(), HttpStatus.FOUND);
 	}
