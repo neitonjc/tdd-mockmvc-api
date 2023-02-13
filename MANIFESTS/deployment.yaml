@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+        name: tdd-mockmvc-api
+        labels:
+          app: tdd-mockmvc-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tdd-mockmvc-api
+  template:
+    metadata:
+      labels:
+        app: tdd-mockmvc-api
+    spec:
+     containers:
+     - name: tdd-mockmvc-api
+       image: neitonjc/tdd-mockmvc-api:1.2.0
+       imagePullPolicy: Always
+       ports:
+         - containerPort: 8080
