@@ -37,9 +37,9 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: Run deployment.yaml
-      run: kubectl apply -f /opt/testes_apis/teste_pods/tdd-mockmvc-api/tdd-mockmvc-api-deployment.yaml
+      run: kubectl apply -f /opt/testes_apis/teste_pods/tdd-mockmvc-api/tdd-mockmvc-api-deployment.yaml --namespace=neiton
     - name: Run service.yaml
-      run: kubectl apply -f /opt/testes_apis/teste_pods/tdd-mockmvc-api/tdd-mockmvc-api-service.yaml
+      run: kubectl apply -f /opt/testes_apis/teste_pods/tdd-mockmvc-api/tdd-mockmvc-api-service.yaml --namespace=neiton
 
   #deploy:
    # name: Deploy in AWS EC2 instance
