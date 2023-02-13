@@ -37,7 +37,7 @@ class PessoaControllerTest {
 
 	@Test
 	void returnSuccess_whenFindAllPeople() throws Exception {
-		this.mockMvc.perform(get("/pessoa/listar")).andExpect(status().isFound());
+		this.mockMvc.perform(get("/pessoa/listar")).andExpect(status().isOk());
 	}
 
 	@Test
@@ -45,7 +45,7 @@ class PessoaControllerTest {
 		this.mockMvc.perform(get("/pessoa/listarPorId")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.param("cod", "1"))
-			.andExpect(status().isFound());
+			.andExpect(status().isOk());
 	}
 	
 	@Test
