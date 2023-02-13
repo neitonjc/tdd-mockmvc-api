@@ -65,4 +65,10 @@ public class PessoaController {
 	public void excluir(@RequestParam(required = true) @NotNull Integer cod){
 		service.delete(cod);
 	}
+	
+	@GetMapping("/teste")
+	@ResponseStatus(HttpStatus.OK)
+	public String teste(){
+		return "Sucesso!";
+	}
 }
