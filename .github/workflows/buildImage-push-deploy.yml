@@ -36,14 +36,10 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-    - uses: jtalk/k8s-deploy@v2
-      with:
-        namespace: 'neiton'
-        manifests: |
-            MANIFESTS/deployment.yaml
-            MANIFESTS/service.yaml
-        images: 'neitonjc/tdd-mockmvc-api:${{ env.RELEASE_VERSION }}'
-        kubectl-version: 'latest'
+    - name: Run deployment.yaml
+      run: kubectl apply -f /opt/testes_apis/teste_pods/tdd-mockmvc-api/tdd-mockmvc-api-deployment.yaml
+    - name: Run service.yaml
+      run: kubectl apply -f /opt/testes_apis/teste_pods/tdd-mockmvc-api/tdd-mockmvc-api-service.yaml
 
   #deploy:
    # name: Deploy in AWS EC2 instance
