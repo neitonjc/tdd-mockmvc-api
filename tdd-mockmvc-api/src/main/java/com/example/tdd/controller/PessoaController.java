@@ -66,9 +66,4 @@ public class PessoaController {
 		service.delete(cod);
 	}
 	
-	@GetMapping("/teste")
-	@ResponseStatus(HttpStatus.OK)
-	public String teste(){
-		return "Sucesso!";
-	}
 }
